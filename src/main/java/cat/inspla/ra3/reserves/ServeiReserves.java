@@ -3,6 +3,7 @@ package cat.inspla.ra3.reserves;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Comparator;
 
 public class ServeiReserves {
     private final List<Reservable> recursos = new ArrayList<>();
@@ -50,15 +51,8 @@ public class ServeiReserves {
     public List<Reservable> obtenirRecursosOrdenatsPerNom() {
         List<Reservable> copia = new ArrayList<>(recursos);
 
-        for (int i = 0; i < copia.size(); i++) {
-            for (int j = 0; j < copia.size() - 1; j++) {
-                if (copia.get(j).getNom().compareToIgnoreCase(copia.get(j + 1).getNom()) > 0) {
-                    Reservable temporal = copia.get(j);
-                    copia.set(j, copia.get(j + 1));
-                    copia.set(j + 1, temporal);
-                }
-            }
-        }
+        // Utilitza el mètode sort de la llista amb un comparador per nom
+        copia.sort(Comparator.comparing(Reservable::getNom, String.CASE_INSENSITIVE_ORDER));
 
         return copia;
     }
@@ -68,13 +62,17 @@ public class ServeiReserves {
      * Cal optimitzar-lo sense canviar el resultat retornat.
      */
     public String generarInformeRecursos() {
-        String informe = "";
+        StringBuilder informe = new StringBuilder();
 
         for (Reservable recurs : recursos) {
-            informe = informe + recurs.getNom() + " - " + recurs.getTipus() + " - "
-                    + (recurs.estaDisponible() ? "Disponible" : "Reservat") + System.lineSeparator();
+            informe.append(recurs.getNom())
+                    .append(" - ")
+                    .append(recurs.getTipus())
+                    .append(" - ")
+                    .append(recurs.estaDisponible() ? "Disponible" : "Reservat")
+                    .append(System.lineSeparator());
         }
 
-        return informe;
+        return informe.toString();
     }
 }
