@@ -4,7 +4,7 @@ package cat.inspla.ra3.reserves;
 
 /**
  * Fitxer: Aula.java
- * Autor: David Lozano
+ * Autor: Joan Roca
  * Data: 14/05/2026
  * Descripcio: Classe que representa una aula on guardem el seu nom capacitat i disponibilitat
  */
