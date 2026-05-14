@@ -1,7 +1,4 @@
 package cat.inspla.ra3.reserves;
-
-// TODO RA4: afegeix una capçalera Javadoc de classe que expliqui la responsabilitat de la classe Aula.
-
 /**
  * Fitxer: Aula.java
  * Autor: Joan Roca
@@ -16,7 +13,6 @@ public class Aula implements Reservable {
     private final int capacitat;
     private boolean disponible;
 
-    // TODO RA4: documenta el constructor amb @param i @throws.
 
     /**
      * Constructor de la Classe Aula
@@ -49,7 +45,6 @@ public class Aula implements Reservable {
     @Override
     public boolean estaDisponible() { return disponible; }
 
-    // TODO RA4: documenta què passa si l'aula ja està reservada.
 
     /**
      * Funcio que reserva l'aula
@@ -66,13 +61,12 @@ public class Aula implements Reservable {
     @Override
     public void alliberar() { disponible = true; }
 
-    // TODO RA4: documenta el càlcul del cost, el paràmetre hores, el retorn i les excepcions.
 
     /**
      * Funcio que calcula el cost d'una reserva donades unes hores
      * @param hores hores que dura la reserva
-     * @throws IllegalArgumentException si les hores passades per parametre son 0 o menys llença la excepcio
      * @return cost que tindra reserva aquella aula duran les hores dones per parametra
+     * @throws IllegalArgumentException si les hores passades per parametre son 0 o menys llença la excepcio
      */
     @Override
     public double calcularCostReserva(int hores) {
